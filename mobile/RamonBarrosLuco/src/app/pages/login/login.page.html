@@ -6,17 +6,17 @@
     </div>
 
     <div class="boxInput">
-      <ion-input label="Correo" label-placement="floating" fill="outline" placeholder="Correo"></ion-input>
+      <ion-input [(ngModel)]="correo" label="Correo" label-placement="floating" fill="outline" placeholder="Correo"></ion-input>
     </div>
 
     <div class="boxInput">
-      <ion-input type="password" label="Contraseña" value="NeverGonnaGiveYouUp">
+      <ion-input type="password" [(ngModel)]="contrasena" label="Contraseña" value="">
         <ion-input-password-toggle slot="end"></ion-input-password-toggle>
       </ion-input>
     </div>
 
     <div class="boxButton">
-      <ion-button expand="full">Acceder</ion-button>
+      <ion-button expand="full"(click)="login()">Acceder</ion-button>
       <ion-button expand="full">Registrar</ion-button>
     </div>
 
