@@ -1,13 +1,71 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>agregar</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">agregar</ion-title>
+<ion-menu menuId="menuAgregar" contentId="main-content-agregar" side="start">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menú</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item>
+        <ion-icon name="home-outline" slot="start"></ion-icon>
+        <ion-label (click)="volver()">Inicio</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+        <ion-label>Agregar Vehículo</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="people-outline" slot="start"></ion-icon>
+        <ion-label>Sobre Nosotros</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content-agregar">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <!-- Ahora el botón apunta al menú local -->
+        <ion-menu-button menu="menuAgregar"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Agregar Vehículo</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Modelo</ion-label>
+        <ion-input type="text" [(ngModel)]="modelo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Marca</ion-label>
+        <ion-input type="text" [(ngModel)]="marca"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Color</ion-label>
+        <ion-input type="text" [(ngModel)]="color"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Patente</ion-label>
+        <ion-input type="text" [(ngModel)]="patente"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">URL Imagen</ion-label>
+        <ion-input type="text" [(ngModel)]="imagen"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" color="primary" (click)="guardar()">
+      Guardar Vehículo
+    </ion-button>
+  </ion-content>
+</div>

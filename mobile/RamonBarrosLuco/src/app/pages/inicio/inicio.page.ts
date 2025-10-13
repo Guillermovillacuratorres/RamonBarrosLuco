@@ -45,4 +45,9 @@ export class InicioPage implements OnInit {
   ngOnInit() {
   }
 
+
+    add() {
+    this.router.navigateByUrl("agregar");
+  }
+
 }
