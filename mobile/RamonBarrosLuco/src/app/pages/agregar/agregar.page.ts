@@ -1,24 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonButton, IonList, IonButtons, IonMenuButton, IonIcon, IonMenu } from '@ionic/angular/standalone';
-import { AgregarAuto } from 'src/app/models/agregarAuto';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonButton, IonList, IonButtons, 
+  IonMenuButton, IonIcon, IonMenu,IonInput } from '@ionic/angular/standalone';
+
 import { Router } from '@angular/router';
+import { VehiculoService } from 'src/app/services/vehiculo-service';
 
 @Component({
   selector: 'app-agregar',
   templateUrl: './agregar.page.html',
   styleUrls: ['./agregar.page.scss'],
   standalone: true,
-  imports: [IonIcon, IonButtons, IonList, IonButton, IonLabel, IonItem, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonMenuButton, IonMenu]
+  imports: [IonIcon, IonButtons, IonList, IonButton, IonLabel, IonItem, IonContent, 
+    IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonMenuButton, IonMenu,IonInput]
 })
 export class AgregarPage implements OnInit {
 
-   modelo = '';
-  marca = '';
-  color = '';
-  patente = '';
-  imagen = '';
+  modelo:string = '';
+  marca:string = '';
+  color:string = '';
+  patente:string = '';
+  imagen:string = '';
+
+
+  private autoService = inject(VehiculoService);
 
   constructor(private router: Router) { }
 
@@ -26,20 +32,20 @@ export class AgregarPage implements OnInit {
   }
 
 
-    guardar() {
-    const nuevoAuto: AgregarAuto = {
-      modelo: this.modelo,
-      marca: this.marca,
-      color: this.color,
-      patente: this.patente,
-      imagen: this.imagen
-    };
-
-    console.log('Nuevo vehículo:', nuevoAuto);
+  guardar() {
+    console.log("1111", this.modelo);
+    
+/*     this.autoService.agregarVehiculo({
+      color:this.color,
+      imagen:this.imagen,
+      marca:this.marca,
+      modelo:this.modelo,
+      patente:this.patente
+    }); */
   }
 
   volver() {
-    this.router.navigateByUrl('/inicio');
+    this.router.navigateByUrl('inicio');
   }
 
 }

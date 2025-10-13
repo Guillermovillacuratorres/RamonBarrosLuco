@@ -10,6 +10,8 @@ import { IonContent, IonHeader, IonTitle, IonToolbar,
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { addCircleOutline, airplane, bluetooth, call, homeOutline, peopleOutline, wifi } from 'ionicons/icons';
+
+import { VehiculoService } from 'src/app/services/vehiculo-service';
 import { Auto } from 'src/app/models/auto';
 
 
@@ -31,23 +33,27 @@ import { Auto } from 'src/app/models/auto';
 export class InicioPage implements OnInit {
 
   private router = inject(Router);
+  private autoService = inject(VehiculoService);
 
-  autos:Auto[] = [
-    {id: 1, marca:"Subaru", imagen:"assets/img/subaru.jpg",modelo:"Impreza"},
-    {id: 2, marca:"Honda", imagen:"assets/img/civic.jpg",modelo:"Civic"},
-    {id: 3, marca:"Nissan", imagen:"assets/img/v16.jpg",modelo:"V16"},
-  ]
+  autos:Auto[]=[];
 
   constructor() {
     addIcons({ airplane, bluetooth, call, wifi,addCircleOutline,peopleOutline,homeOutline });
    }
 
   ngOnInit() {
+    this.cargarAutos();
   }
 
 
     add() {
     this.router.navigateByUrl("agregar");
   }
+
+  async cargarAutos(){
+    const request = await this.autoService.obtenerVehiculos();
+    this.autos = request.data;
+  }
+
 
 }
