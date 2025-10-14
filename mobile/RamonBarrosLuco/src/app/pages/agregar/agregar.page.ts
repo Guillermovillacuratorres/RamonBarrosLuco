@@ -6,6 +6,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonButt
 
 import { Router } from '@angular/router';
 import { VehiculoService } from 'src/app/services/vehiculo-service';
+import { HelperService } from 'src/app/services/helper-service';
 
 @Component({
   selector: 'app-agregar',
@@ -25,6 +26,7 @@ export class AgregarPage implements OnInit {
 
 
   private autoService = inject(VehiculoService);
+  private helper = inject(HelperService);
 
   constructor(private router: Router) { }
 
@@ -34,14 +36,17 @@ export class AgregarPage implements OnInit {
 
   guardar() {
     console.log("1111", this.modelo);
+    console.log("22222", this.marca);
     
-/*     this.autoService.agregarVehiculo({
+    
+     this.autoService.agregarVehiculo({
       color:this.color,
       imagen:this.imagen,
       marca:this.marca,
       modelo:this.modelo,
       patente:this.patente
-    }); */
+    }); 
+    this.helper.showAlert("Vehiculo agregado corectamente", "Información");
   }
 
   volver() {

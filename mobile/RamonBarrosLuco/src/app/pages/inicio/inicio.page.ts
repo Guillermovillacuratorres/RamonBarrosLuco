@@ -13,6 +13,7 @@ import { addCircleOutline, airplane, bluetooth, call, homeOutline, peopleOutline
 
 import { VehiculoService } from 'src/app/services/vehiculo-service';
 import { Auto } from 'src/app/models/auto';
+import { HelperService } from 'src/app/services/helper-service';
 
 
 @Component({
@@ -34,6 +35,7 @@ export class InicioPage implements OnInit {
 
   private router = inject(Router);
   private autoService = inject(VehiculoService);
+  private helper = inject(HelperService);
 
   autos:Auto[]=[];
 
@@ -51,8 +53,10 @@ export class InicioPage implements OnInit {
   }
 
   async cargarAutos(){
+    const loader = this.helper.showLoader("Cargando autitos!");
     const request = await this.autoService.obtenerVehiculos();
     this.autos = request.data;
+    (await loader).dismiss();
   }
 
 
