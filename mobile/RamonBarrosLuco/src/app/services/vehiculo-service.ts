@@ -25,6 +25,24 @@ export class VehiculoService {
     return  response;
   }
 
+
+  async editarVehiculo(body:Auto){
+    const response = await lastValueFrom(this.http.put<any>(this.apiUrl + "api/autos",body));
+    return  response;
+  }
+
+
+  async eliminarVehiculo(patente:string){
+    const response = await lastValueFrom(this.http.delete<ApiResponse<any>>(this.apiUrl + 'api/autos/' + patente));
+    return response;
+  }
+
+  async buscarVehiculo(patente:string){
+    const response = await lastValueFrom(this.http.get<ApiResponse<any>>(this.apiUrl + 'api/autos/' + patente));
+    return response;
+  }
+
+
   
 }
 

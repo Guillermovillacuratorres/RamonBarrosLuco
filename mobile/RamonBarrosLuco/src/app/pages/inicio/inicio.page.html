@@ -52,7 +52,10 @@
                 </ion-card-header>
               
                 <ion-card-content>
-                  <!-- Here's a small text description for the card content. Nothing more, nothing less. -->
+                  <div class="BoxBtn">
+                    <ion-button (click)="eliminarVehiculo(a.patente)" >Eliminar</ion-button>
+                    <ion-button  (click)="editarVehiculo(a.patente)">Editar</ion-button>
+                  </div>
                 </ion-card-content>
               </ion-card>
             </ion-col>

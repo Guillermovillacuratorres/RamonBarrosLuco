@@ -1,7 +1,7 @@
 export interface Auto {
-  modelo: String;
-  marca:String;
-  color:String;
-  patente:String;
-  imagen:String;
+  modelo: string;
+  marca:string;
+  color:string;
+  patente:string;
+  imagen:string;
 }

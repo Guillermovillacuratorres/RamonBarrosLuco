@@ -5,8 +5,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar,
   IonButtons,IonMenu,IonMenuButton, IonIcon, IonItem, 
   IonLabel, IonList, IonCard, IonCardContent, IonCardHeader,
   IonCardSubtitle, IonCardTitle,
-  IonCol, IonGrid, IonRow 
- } from '@ionic/angular/standalone';
+  IonCol, IonGrid, IonRow, IonButton } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { addCircleOutline, airplane, bluetooth, call, homeOutline, peopleOutline, wifi } from 'ionicons/icons';
@@ -21,7 +20,7 @@ import { HelperService } from 'src/app/services/helper-service';
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, 
+  imports: [IonButton, IonContent, IonHeader, IonTitle, 
     IonToolbar, CommonModule, FormsModule,
     IonButtons,IonMenu, IonMenuButton,
     IonIcon, IonItem, IonLabel, IonList,
@@ -59,5 +58,16 @@ export class InicioPage implements OnInit {
     (await loader).dismiss();
   }
 
+
+
+  async eliminarVehiculo(patente:string){
+    const req = await this.autoService.eliminarVehiculo(patente);
+    this.cargarAutos();
+    this.helper.showAlert("Vehiculo eliminado correctamente","Información");
+  }
+
+  editarVehiculo(patente:string){
+    this.router.navigateByUrl("editar/"+ patente);
+  }
 
 }

@@ -42,6 +42,11 @@ export const routes: Routes = [
     path: 'not-found',
     loadComponent: () => import('./pages/not-found/not-found.page').then( m => m.NotFoundPage)
   },
+  {
+    path: 'editar/:patente',
+    loadComponent: () => import('./pages/editar/editar.page').then( m => m.EditarPage)
+  },
+
 
 
 

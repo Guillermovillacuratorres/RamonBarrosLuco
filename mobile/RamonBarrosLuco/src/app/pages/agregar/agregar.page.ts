@@ -47,6 +47,7 @@ export class AgregarPage implements OnInit {
       patente:this.patente
     }); 
     this.helper.showAlert("Vehiculo agregado corectamente", "Información");
+    this.router.navigateByUrl("inicio");
   }
 
   volver() {
